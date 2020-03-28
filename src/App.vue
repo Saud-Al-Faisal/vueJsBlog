@@ -1,32 +1,44 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div id="app" class="site-wrapper">
+    <header class="px-1-mb">
+      <NabVar />
+    </header>
+    <div id="site-content">
+      <router-view />
     </div>
-    <router-view />
+    <footer>
+      <Footer />
+    </footer>
   </div>
 </template>
+<script>
+// @ is an alias to /src
+import NabVar from '@/components/layouts/Header.vue'
+import Footer from '@/components/layouts/Footer.vue'
 
-<style>
+export default {
+  name: 'Home',
+  components: {
+    NabVar,
+    Footer
+  }
+}
+</script>
+<style scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  position: relative;
+  min-height: 100%;
 }
-
-#nav {
-  padding: 30px;
+#site-content {
+  padding-bottom: 73px;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.px-1-mb {
+  margin-bottom: 1px;
 }
 </style>
